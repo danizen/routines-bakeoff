@@ -1,0 +1,53 @@
+export default [
+  {
+    name: 'Morning',
+    description: 'Getting up and out the door',
+    items: [
+      'Shower',
+      'Get dressed',
+      'Take pills',
+      'Make coffee',
+      'Make breakfast',
+      'Eat breakfast',
+      'Get badge',
+    ],
+  },
+  {
+    name: 'Bedtime',
+    description: 'Kids bedtime',
+    items: [
+      'Take pills (melatonin)',
+      'Put clothes in the hamper',
+      'Brush teeth',
+      'Story',
+      'Second story',
+    ],
+  },
+  {
+    name: 'Clean kitchen',
+    description: 'How to clean the kitchen in easy steps',
+    items: [
+      'Find the iPad and assess batteries',
+      'Empty dishwasher',
+      'Empty drying rack',
+      'Load dishwasher',
+      'Clean-up recycling',
+      'Start Netflix',
+      'Wash hand-wash dishes',
+      'Finish episode',
+    ],
+  },
+  {
+    name: 'Hand therapy',
+    description: 'Do hand-therapy exercises',
+    itmes: [
+      'Wrist side-to-side extension',
+      'Wrist up/down extension',
+      'Throw darts',
+      'Wrist rolls',
+      'Thumb to pinky slide down to palm',
+      'Thumb out down to palm (like holding a deck of cards)',
+      'Thumb extension',
+    ],
+  },
+];
