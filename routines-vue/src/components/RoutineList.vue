@@ -2,8 +2,10 @@
   <div>
     <h1>Routines</h1>
     <ul>
-      <li v-for="routine of routines" :key="routine.name">
-        {{routine.name}}
+      <li v-for="(routine, index) of routines" :key="index">
+        <router-link :to="{name: 'routine-detail', params: {id: index}}">
+          {{routine.name}}
+        </router-link>
       </li>
     </ul>
   </div>
