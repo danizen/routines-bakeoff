@@ -29,4 +29,8 @@ There is a sitemap listing all these pages
 
 ## Implementations
 
-Each implementation is a sub-directory with its own .gitignore
+Each implementation is a sub-directory with its own `.gitignore`
+
+* routines-nuxt - the app with nuxt
+* routines-gatsby - the app with gatsby
+* routines-django - the app with Django
