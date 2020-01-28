@@ -9,7 +9,7 @@ collections:
   - name: 'routines'
     label: 'Routine'
     format: 'json'
-    folder: 'assets/content/routines'
+    folder: 'nuxt-netlify/assets/content/routines'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
