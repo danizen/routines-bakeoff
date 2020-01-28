@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "app_function": "routines.app",
+        "aws_region": "us-east-1",
+        "profile_name": "sbox-ab-django",
+        "project_name": "flask-routines-",
+        "runtime": "python3.6",
+        "s3_bucket": "nlm-sbox-ab-django-app-djangotest-artifacts-us-east-1"
+    },
+    "integration": {
+        "app_function": "routines.app",
+        "aws_region": "us-east-1",
+        "profile_name": "int",
+        "project_name": "flask-routines-",
+        "runtime": "python3.6",
+        "s3_bucket": "nlm-int-djangotest-artifacts-us-east-1",
+        "manage_roles": false,
+        "role_name": "Name-Of-role"
+    }
+}

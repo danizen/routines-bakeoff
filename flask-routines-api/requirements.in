@@ -1,0 +1,6 @@
+botocore
+boto3
+urllib3
+pynamodb
+Flask
+zappa
