@@ -5,7 +5,13 @@
         "profile_name": "sbox-ab-django",
         "project_name": "flask-routines-",
         "runtime": "python3.6",
-        "s3_bucket": "nlm-sbox-ab-django-app-djangotest-artifacts-us-east-1"
+        "s3_bucket": "nlm-sbox-ab-django-app-djangotest-artifacts-us-east-1",
+        "route53_enabled": false,
+        "extra_permissions": [{
+            "Effect": "Allow",
+            "Action": ["dynamodb:*"], // AWS Service ARN
+            "Resource": "arn:aws:dynamodb:us-east-1::table/routines"
+        }],
     },
     "integration": {
         "app_function": "routines.app",
@@ -14,6 +20,8 @@
         "project_name": "flask-routines-",
         "runtime": "python3.6",
         "s3_bucket": "nlm-int-djangotest-artifacts-us-east-1",
+        "route53_enabled": false,
+
         "manage_roles": false,
         "role_name": "Name-Of-role"
     }
