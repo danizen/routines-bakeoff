@@ -6,16 +6,39 @@ DYNAMO_PREFIX = os.environ.get('DYNAMO_PREFIX', 'routines_')
 DYNAMO_REGION = os.environ.get('DYANMO_REGION', 'us-east-1')
 
 
-class Item(MapAttribute):
-    name = UnicodeAttribute()
-    description = UnicodeAttribute()
-
-
 class Routine(Model):
     class Meta:
         table_name = DYNAMO_PREFIX + 'routines'
         region = DYNAMO_REGION
 
-    user_id = UnicodeAttribute(hash_key=True)
+    user = UnicodeAttribute(hash_key=True)
     name = UnicodeAttribute(range_key=True)
-    items = ListAttribute(null=True, of=Item)
+    description = UnicodeAttribute(default='')
+    items = ListAttribute(default=[])
+
+
+tables = [
+    Routine
+]
+
+
+def create_tables(read_capacity=4, write_capacity=2):
+    for table_class in tables:
+        if table_class.exists():
+            print('table %s exists.' % table_class.Meta.table_name)
+        else:
+            print('Creating table "%s"...' % table_class.Meta.table_name)
+            table_class.create_table(
+                read_capacity_units=read_capacity,
+                write_capacity_units=write_capacity,
+                wait=True
+            )
+            print('Done.')
+
+
+def delete_tables():
+    for table_class in tables:
+        if table_class.exists():
+            print('Deleting table "%s"...' % table_class.Meta.table_name)
+            table_class.delete_table();
+            print('Done.')

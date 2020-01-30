@@ -1,8 +1,9 @@
+#!/usr/bin/env python
 import os
 import sys
 from argparse import ArgumentParser
 
-from routines.models import Routine
+from routines.models import create_tables, delete_tables
 
 
 def run_command(opts):
@@ -11,21 +12,11 @@ def run_command(opts):
 
 
 def create_tables_command(opts):
-    if not Routine.exists():
-        print('Creating routine table...')
-        Routine.create_table(
-            read_capacity_units=4,
-            write_capacity_units=2,
-            wait=True
-        )
-        print('Done.')
+    create_tables(4, 2)
 
 
 def delete_tables_command(opts):
-    if Routine.exists():
-        print('Delete routine table...')
-        Routine.delete_table()
-        print('Done.')
+    delete_tables()
 
 
 def create_parser(prog_name):

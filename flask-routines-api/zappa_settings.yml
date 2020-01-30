@@ -1,0 +1,37 @@
+---
+dev:
+  app_function: routines.app
+  aws_region: us-east-1
+  profile_name: sbox-ab-django
+  project_name: routines-api
+  runtime: python3.7
+  s3_bucket: nlm-sbox-ab-django-app-djangotest-artifacts-us-east-1
+  # Defines a prefix added to all tables in the development environment
+  environment_variables:
+    PYNAMO_PREFIX: routines_dev_
+    PYNAMO_REGION: us-east-1
+  # See https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_dynamodb_specific-table.html
+  extra_permissions:
+    - Sid: ListAndDescribe
+      Effect: Allow
+      Action:
+        - dynamodb:List*
+        - dynamodb:DescribeReservedCapacity*
+        - dynamodb:DescribeLimits
+        - dynamodb:DescribeTimeToLive
+      Resource: "*"
+    - Sid: SpecificTable
+      Effect: Allow
+      Action:
+        - dynamodb:BatchGet*
+        - dynamodb:DescribeStream
+        - dynamodb:DescribeTable
+        - dynamodb:Get*
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:BatchWrite*
+        - dynamodb:CreateTable
+        - dynamodb:Delete*
+        - dynamodb:Update*
+        - dynamodb:PutItem
+      Resource: "arn:aws:dynamodb:*:*:table/routines_dev_*"
