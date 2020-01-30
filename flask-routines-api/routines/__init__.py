@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import json
 
 from .routines import bp
@@ -16,3 +16,13 @@ app.register_blueprint(bp)
 @app.route('/version')
 def version():
     return json.dumps({'version': __version__})
+
+
+@app.route('/')
+def index():
+    return json.dumps({
+        'urls': [
+            request.base_url + 'version',
+            request.base_url + 'routines',
+        ]
+    })

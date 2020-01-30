@@ -1,6 +1,6 @@
 import os
 from pynamodb.models import Model
-from pynamodb.attributes import ListAttribute, MapAttribute, UnicodeAttribute
+from pynamodb.attributes import ListAttribute, UnicodeAttribute
 
 DYNAMO_PREFIX = os.environ.get('DYNAMO_PREFIX', 'routines_')
 DYNAMO_REGION = os.environ.get('DYANMO_REGION', 'us-east-1')
@@ -13,8 +13,16 @@ class Routine(Model):
 
     user = UnicodeAttribute(hash_key=True)
     name = UnicodeAttribute(range_key=True)
-    description = UnicodeAttribute(default='')
-    items = ListAttribute(default=[])
+    description = UnicodeAttribute()
+    items = ListAttribute()
+
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('_user_instantiated', True):
+            if 'description' not in kwargs:
+                kwargs['description'] = ''
+            if 'items' not in kwargs:
+                kwargs['items'] = []
+        super().__init__(*args, **kwargs)
 
 
 tables = [
@@ -40,5 +48,5 @@ def delete_tables():
     for table_class in tables:
         if table_class.exists():
             print('Deleting table "%s"...' % table_class.Meta.table_name)
-            table_class.delete_table();
+            table_class.delete_table()
             print('Done.')
