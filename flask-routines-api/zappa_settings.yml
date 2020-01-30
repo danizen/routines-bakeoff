@@ -10,28 +10,3 @@ dev:
   environment_variables:
     PYNAMO_PREFIX: routines_dev_
     PYNAMO_REGION: us-east-1
-  # See https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_dynamodb_specific-table.html
-  extra_permissions:
-    - Sid: ListAndDescribe
-      Effect: Allow
-      Action:
-        - dynamodb:List*
-        - dynamodb:DescribeReservedCapacity*
-        - dynamodb:DescribeLimits
-        - dynamodb:DescribeTimeToLive
-      Resource: "*"
-    - Sid: SpecificTable
-      Effect: Allow
-      Action:
-        - dynamodb:BatchGet*
-        - dynamodb:DescribeStream
-        - dynamodb:DescribeTable
-        - dynamodb:Get*
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:BatchWrite*
-        - dynamodb:CreateTable
-        - dynamodb:Delete*
-        - dynamodb:Update*
-        - dynamodb:PutItem
-      Resource: "arn:aws:dynamodb:*:*:table/routines_dev_*"
