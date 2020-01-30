@@ -8,5 +8,5 @@ dev:
   s3_bucket: nlm-sbox-ab-django-app-djangotest-artifacts-us-east-1
   # Defines a prefix added to all tables in the development environment
   environment_variables:
-    PYNAMO_PREFIX: routines_dev_
-    PYNAMO_REGION: us-east-1
+    DYNAMO_PREFIX: routines_dev_
+    DYNAMO_REGION: us-east-1
